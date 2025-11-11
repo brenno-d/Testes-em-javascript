@@ -8,35 +8,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ex01</title>
     <style>
-        .par{
-            color: darkorange;
-        }
-        .impar{
-            color: violet;
-        }
     </style>
 </head>
+
 <body>
     <div class="container-fluid">
-        <h1 class="h1"></h1>
-        <div class="form-group mx-auto col-md-3">
+        <div class="row justify-content-center ">
+            <h1 class="h1"></h1>
             <p class="text-center h1">Conversor de temperaturas</p>
-            <form action="" id="numero">
-                <input type="text" class="form-control" id="campo_numero"
-                    placeholder="Digite o número." style="margin-bottom: 20px;">
-            </form>
-            <p id="resultado" class="h3 text-center"></p>
+            <div class="col-md-2">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Grau Celsius:</h5>
+                        <input type="text" class="form-control" id="campo_numero" placeholder="Digite o número."
+                            style="margin-bottom: 20px;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-2">
+                    <div class="col-12">
+                        <div class="card mb-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Grau Fahrenheit:</h5>
+                                <p class="h4" id="fahrenheit">--</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Kelvin:</h5>
+                                <p class="h4" id="kelvin">--</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script>
 
         var resultado = document.getElementById("resultado");
-       document.getElementById("campo_numero").addEventListener("keyup",function(){
-        let numero = Number(document.getElementById("campo_numero").value);
-        
-        document.getElementById("resultado").innerHTML = "A temperatura em Fahrenheit é:"+ ((numero * 9/5) + 32) +" <br> Kelvin: "+	
-(numero + 273.15)
-       });
+        document.getElementById("campo_numero").addEventListener("keyup", function () {
+            let numero = Number(document.getElementById("campo_numero").value);
+
+            document.getElementById("fahrenheit").innerHTML = ((numero * 9 / 5) + 32);
+            document.getElementById("kelvin").innerHTML = (numero + 273.15);
+        });
     </script>
 </body>
 
