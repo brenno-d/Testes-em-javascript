@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex07</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h1 class="h1"></h1>
+            <div class="form-group mx-auto col-md-3">
+                <p class="text-center h1">Soma</p>
+                <div class="d-flex justify-content-center">
+                    <form action="" id="numero">
+                        <input type="text" class="form-control" id="campo_numero" placeholder="Digite o número."
+                            style="margin-bottom: 2px;">
+                        <small>Pressione enter para adicionar o número à lista <br> Digite 0 e pressione enter para
+                            somar</small>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p id="resultado" class="h3 text-center"></p>
+    <script>
+        var lista = [];
+        var i = 0;
+        var tecla = document.getElementById("campo_numero");
+        var resultado = document.getElementById("resultado");
+        var soma = 0;
+        var digitos = ''
+        var digitos = '';
+        tecla.addEventListener("keydown", (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                somar();
+            }
+        });
+        function somar() {
+            let numero = Number(document.getElementById("campo_numero").value);
+
+
+            if (numero != 0) {
+                soma += numero;
+                lista[i] = numero;
+
+                if (digitos === "") {
+                    digitos = lista[i];
+                } else {
+                    digitos += " + " + lista[i];
+                }
+
+                i++;
+                tecla.value = '';
+                resultado.innerHTML= '';
+            }
+            else {
+                resultado.innerHTML = digitos + "<br><br>Resultado final: " + soma;
+                soma = 0;
+                digitos = "";
+                lista = [];
+                i = 0;
+                tecla.value = "";
+                
+
+            }
+
+
+        };
+    </script>
+</body>
+
+</html>

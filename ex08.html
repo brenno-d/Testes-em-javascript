@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex08</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1 class="h1"></h1>
+        <div class="form-group mx-auto col-md-3">
+            <p class="text-center h1">Calculadora de idade</p>
+            <form action="" id="numero">
+                <input type="text" class="form-control" id="campo_dia" placeholder="Digite o dia."
+                    style="margin-bottom: 30px;">
+
+                <input type="text" class="form-control" id="campo_mes" placeholder="Digite o mês."
+                    style="margin-bottom: 30px;">
+
+                <input type="text" class="form-control" id="campo_ano" placeholder="Digite o ano."
+                    style="margin-bottom: 30px;">
+
+                <button type="button" id="enviar" onclick="calcularIdade()"
+                    class="btn btn-primary offset-md-4 margin-bottom: 10px ">Ver idade</button>
+            </form>
+            <p id="resultado" class="h3 text-center"></p>
+        </div>
+    </div>
+    <script>
+        function calcularIdade() {
+            var anousuario = Number(document.getElementById("campo_ano").value);
+            var mesusuario = Number(document.getElementById("campo_mes").value);
+            var diausuario = Number(document.getElementById("campo_dia").value);
+            var resultado = document.getElementById("resultado");
+            var anoatual = 2025;
+            var mesatual = 11;
+            var diaatual = 11;
+            var idadeano;
+            var idademes;
+            var dias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if (anousuario % 4 == 0) {
+                dias[1] = 29;
+            }
+            if (anousuario > 2025) {
+                alert("ano inválido!");
+            }
+            if (mesusuario > 12 || mesusuario < 1) {
+                alert("Mês inválido!");
+            }
+            if (diausuario > dias[mesusuario - 1] || diausuario < 1) {
+                alert("Dia inválido!");
+            }
+
+            else {
+                idadeano = anoatual - anousuario;
+                idademes = mesatual - mesusuario;
+
+                if (mesatual < mesusuario || (mesatual == mesusuario && diaatual < diausuario)) {
+                    idadeano -= 1;
+                    idademes += 12;
+                }
+                if (mesatual === mesusuario && diaatual < diausuario) {
+                    idademes -= 1;
+                }
+
+                resultado.innerText = "Sua idade é: " + idadeano + " anos e " + idademes + " meses";
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html>
